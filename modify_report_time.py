@@ -10,7 +10,7 @@ utc_plus_7_time = current_time + timedelta(hours=7)
 formatted_time = utc_plus_7_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 # Read the original report file
-with open('report_template.html', 'r') as file:
+with open('templates/report_template.html', 'r') as file:
     report_content = file.read()
 
 # Replace the placeholder with the formatted time
