@@ -43,7 +43,7 @@
 
         - name: install dependencies
           run: |
-            python -m pip install pytest .
+            python -m pip install pytest
             python -m pip install selenium
 
         - name: Run tests
