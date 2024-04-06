@@ -44,6 +44,7 @@
           run: |
             python -m pip install pytest
             python -m pip install selenium
+            python -m pip install webdriver-manager
 
         - name: Run tests
           run: python -m pytest -vs
