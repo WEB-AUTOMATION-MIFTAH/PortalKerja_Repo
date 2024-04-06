@@ -9,12 +9,11 @@
       strategy:
         fail-fast: false
         matrix:
-          os: [windows-latest, macos-latest]
+          os: [windows-latest]
           python-versions:
             - "3.7"
             - "3.11"
             - "pypy-3.9"
-
 
       name: Test
       runs-on: ${{ matrix.os }}
@@ -22,6 +21,20 @@
       steps:
         - name: Checkout code
           uses: actions/checkout@v3
+
+        - name: Set up runner
+          run: |
+            mkdir actions-runner
+            cd actions-runner
+            Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.315.0/actions-runner-win-x64-2.315.0.zip -OutFile actions-runner-win-x64-2.315.0.zip
+            Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.315.0.zip", "$PWD")
+
+        - name: Configure runner
+          run: |
+              .\config.cmd --url https://github.com/WEB-AUTOMATION-MIFTAH/PortalKerja_Repo --token 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
+
+        - name: Start runner
+          run: .\run.cmd
 
         - name: Set up Python
           uses: actions/setup-python@v4
