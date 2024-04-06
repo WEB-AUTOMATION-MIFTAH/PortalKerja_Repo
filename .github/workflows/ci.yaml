@@ -47,4 +47,4 @@
             python -m pip install webdriver-manager
 
         - name: Run tests
-          run: python -m pytest -vs
+          run: python -m pytest -vs --html=report_in_github.html -m smoke
