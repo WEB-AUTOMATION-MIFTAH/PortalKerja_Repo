@@ -29,9 +29,9 @@
             Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.315.0/actions-runner-win-x64-2.315.0.zip -OutFile actions-runner-win-x64-2.315.0.zip
             Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.315.0.zip", "$PWD")
 
-        - name: Configure runner
-          run: |
-              .\config.cmd --url https://github.com/WEB-AUTOMATION-MIFTAH/PortalKerja_Repo --token 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
+#        - name: Configure runner
+#          run: |
+#
 
         - name: Start runner
           run: .\run.cmd
