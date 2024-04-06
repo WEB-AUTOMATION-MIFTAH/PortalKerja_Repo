@@ -31,7 +31,7 @@
               echo ^<!DOCTYPE html^>
               echo ^<html^>
               echo   ^<head^>
-              echo     ^<title^>report_action.html^</title^>
+              echo     ^<title^>report_action^</title^>
               echo     ^<script^>
               echo       function convertToUTC7(utcTime) {^
               echo           var date = new Date(utcTime);^
@@ -50,12 +50,12 @@
               echo     ^</script^>
               echo   ^</head^>
               echo   ^<body^>
-              echo     ^<h1^>HTML Report^</h1^>
+              echo     ^<h1^>report_action^</h1^>
               echo     ^<p^>Last updated: ^<span class="utc-time"^>2024-01-28T12:00:00Z^</span^>^</p^>
               echo     ^<!-- Add more elements with UTC times and class="utc-time" -->^
               echo   ^</body^>
               echo ^</html^>
-            ) > report.html
+            ) > report_action.html
 
 #        - name: Set up runner
 #          run: |
