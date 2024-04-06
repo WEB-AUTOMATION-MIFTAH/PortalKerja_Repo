@@ -1,8 +1,11 @@
   name: Selenium_Python_CI
 
   on:
+    schedule:
+    - cron: '45 21 * * *'
     push:
     pull_request:
+
 
   jobs:
     run-tests:
@@ -11,9 +14,7 @@
         matrix:
           os: [windows-latest]
           python-versions:
-#            - "3.7"
             - "3.11"
-#            - "pypy-3.9"
 
       name: Test_Portal_Kerja
       runs-on: ${{ matrix.os }}
@@ -30,7 +31,7 @@
 #            Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.315.0.zip", "$PWD")
 
         - name: Set up Python
-          uses: actions/setup-python@v4
+          uses: actions/setup-python@v3.11
           with:
             python-version: ${{matrix.python-version}}
 
