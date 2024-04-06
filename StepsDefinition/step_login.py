@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from Pages.basemethod import CustomMethod
 from Pages.login import LocatorLoginPage
 
-
 class StepDefLogin(CustomMethod, LocatorLoginPage):
 
     def __init__(self, driver):
@@ -24,6 +23,7 @@ class StepDefLogin(CustomMethod, LocatorLoginPage):
         pass
 
     def user_do_login(self, fill_in_email, fill_in_Passwd):
+        self.click_to(self.LOC_LOGIN_NAV_BTN)
         self.fill_in(self.LOC_EMAIL_FIELD, fill_in_email)
         self.fill_in(self.LOC_PWD_FIELD, fill_in_Passwd)
         self.click_to(self.LOC_LOGIN_BTN)
