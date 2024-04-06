@@ -45,8 +45,9 @@
           run: | 
             cd Test
             mkdir -p reports
-            python -m pytest -vs -m smoke --browser=edge --html=reports/report_action.html --self-contained-html
             python modify_report_time.py
+            python -m pytest -vs -m smoke --browser=edge --html=reports/report_action.html --self-contained-html
+            
 
 #        - name: Modify HTML Report
 #          run: |
