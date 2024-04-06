@@ -1,4 +1,4 @@
-  name: CI
+  name: Selenium_Python_CI
 
   on:
     push:
@@ -9,31 +9,25 @@
       strategy:
         fail-fast: false
         matrix:
-          os: [windows-latest]
+          os: [windows-latest, macos-latest, ubuntu-latest]
           python-versions:
-            - "3.7"
+#            - "3.7"
             - "3.11"
-            - "pypy-3.9"
+#            - "pypy-3.9"
 
-      name: Test
+      name: Test_Portal_Kerja
       runs-on: ${{ matrix.os }}
 
       steps:
         - name: Checkout code
           uses: actions/checkout@v3
 
-        - name: Set up runner
-          run: |
-            mkdir actions-runner
-            cd actions-runner
-            Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.315.0/actions-runner-win-x64-2.315.0.zip -OutFile actions-runner-win-x64-2.315.0.zip
-            Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.315.0.zip", "$PWD")
-
-#        - name: Configure runner
+#        - name: Set up runner
 #          run: |
-#
-#        - name: Start runner
-#          run: .\run.cmd
+#            mkdir actions-runner
+#            cd actions-runner
+#            Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.315.0/actions-runner-win-x64-2.315.0.zip -OutFile actions-runner-win-x64-2.315.0.zip
+#            Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.315.0.zip", "$PWD")
 
         - name: Set up Python
           uses: actions/setup-python@v4
@@ -42,10 +36,22 @@
 
         - name: install dependencies
           run: |
-            python -m pip install pytest
-            python -m pip install selenium
-            python -m pip install webdriver-manager
-            python -m pip install pytest-html
+            python -m pip install --upgrade pip
+            python -m pip install -r requirements.txt
 
         - name: Run tests
-          run: python -m pytest -vs --html=report_in_github.html -m smoke
+          run: | 
+            cd Test
+            mkdir -p reports
+            python -m pytest -vs -m smoke --browser=edge --html=reports/report_action.html
+
+        - name: Set output
+          if: success() || failure()
+          id: results
+          run: echo "artifactPath=Test/reports/" >> $GITHUB_OUTPUT
+
+        - uses: actions/upload-artifact@v3
+          if: success() || failure()
+          with:
+            name: test-report-hrms
+            path: ${{ steps.results.output.artifactPath }}
