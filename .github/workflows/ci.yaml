@@ -2,7 +2,7 @@
 
   on:
     schedule:
-    - cron: '45 19 * * *'
+    - cron: '46 19 * * *'
 
   jobs:
     run-tests:
