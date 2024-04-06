@@ -26,37 +26,37 @@
 
         - name: Generate HTML Report
           run: |
-            (
-            echo "<!DOCTYPE html>"
-            echo "<html>"
-            echo "  <head>"
-            echo "    <title>HTML Report</title>"
-            echo "    <script>"
-            echo "      function convertToUTC7(utcTime) {"
-            echo "          var date = new Date(utcTime);"
-            echo "          var utcPlus7Time = new Date(date.getTime() + (7 * 60 * 60 * 1000));"
-            echo "          return utcPlus7Time;"
-            echo "      }"
-            echo ""
-            echo "      document.addEventListener('DOMContentLoaded', function() {"
-            echo "          var utcTimeElements = document.querySelectorAll('.utc-time');"
-            echo "          utcTimeElements.forEach(function(element) {"
-            echo "              var utcTime = element.textContent.trim();"
-            echo "              var utcPlus7Time = convertToUTC7(utcTime);"
-            echo "              element.textContent = utcPlus7Time.toISOString();"
-            echo "          });"
-            echo "      });"
-            echo "    </script>"
-            echo "  </head>"
-            echo "  <body>"
-            echo "    <h1>HTML Report</h1>"
-            echo "    <p>Last updated: <span class='utc-time'>2024-01-28T12:00:00Z</span></p>"
-            echo "    <!-- Add more elements with UTC times and class='utc-time' -->"
-            echo "  </body>"
-            echo "</html>"
-            ) > report_action.html
-        
-        
+            $htmlContent = @"
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <title>HTML Report</title>
+                <script>
+                  function convertToUTC7(utcTime) {
+                      var date = new Date(utcTime);
+                      var utcPlus7Time = new Date(date.getTime() + (7 * 60 * 60 * 1000));
+                      return utcPlus7Time;
+                  }
+
+                  document.addEventListener('DOMContentLoaded', function() {
+                      var utcTimeElements = document.querySelectorAll('.utc-time');
+                      utcTimeElements.forEach(function(element) {
+                          var utcTime = element.textContent.trim();
+                          var utcPlus7Time = convertToUTC7(utcTime);
+                          element.textContent = utcPlus7Time.toISOString();
+                      });
+                  });
+                </script>
+              </head>
+              <body>
+                <h1>HTML Report</h1>
+                <p>Last updated: <span class='utc-time'>2024-01-28T12:00:00Z</span></p>
+                <!-- Add more elements with UTC times and class='utc-time' -->
+              </body>
+            </html>
+            "@
+                Set-Content -Path report_action.html -Value $htmlContent
+
 
         #        - name: Set up runner
 #          run: |
