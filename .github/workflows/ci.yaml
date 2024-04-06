@@ -37,13 +37,13 @@
                       var utcPlus7Time = new Date(date.getTime() + (7 * 60 * 60 * 1000));
                       return utcPlus7Time;
                   }
-
+        
                   document.addEventListener('DOMContentLoaded', function() {
                       var utcTimeElements = document.querySelectorAll('.utc-time');
                       utcTimeElements.forEach(function(element) {
                           var utcTime = element.textContent.trim();
                           var utcPlus7Time = convertToUTC7(utcTime);
-                          element.textContent = utcPlus7Time.toISOString();
+                          element.textContent = utcPlus7Time.toLocaleString();
                       });
                   });
                 </script>
@@ -55,7 +55,9 @@
               </body>
             </html>
             "@
+    
                 Set-Content -Path report_action.html -Value $htmlContent
+
 
 
         #        - name: Set up runner
