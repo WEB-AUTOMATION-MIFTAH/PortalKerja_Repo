@@ -32,7 +32,6 @@
 #        - name: Configure runner
 #          run: |
 #
-
 #        - name: Start runner
 #          run: .\run.cmd
 
