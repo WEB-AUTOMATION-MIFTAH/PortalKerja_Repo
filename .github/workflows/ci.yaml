@@ -54,4 +54,4 @@
           if: success() || failure()
           with:
             name: test-report-hrms
-            path: ${{ steps.results.output.artifactPath }}
+            path: Test/reports/report_action.html
