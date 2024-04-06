@@ -20,6 +20,13 @@
       runs-on: ${{ matrix.os }}
 
       steps:
+        - name: Retrieve current Date Time in Singapore TimeZone
+          shell: bash
+          run: echo "START_TIME=$(TZ=":Asia/Jakarta" date -R|sed 's/.....$//')" >> $GITHUB_ENV
+
+        - name: print date
+          run: echo ${{ env.START_TIME }}
+
         - name: Checkout code
           uses: actions/checkout@v3
 
