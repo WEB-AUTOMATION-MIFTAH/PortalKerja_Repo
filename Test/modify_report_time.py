@@ -17,5 +17,5 @@ with open('reports/report_action.html', 'r') as file:
 modified_report = report_content.replace('2024-01-28T12:00:00Z', formatted_time)
 
 # Write the modified report to a new file
-with open('report_action.html', 'w') as file:
+with open('../report_action.html', 'w') as file:
     file.write(modified_report)
