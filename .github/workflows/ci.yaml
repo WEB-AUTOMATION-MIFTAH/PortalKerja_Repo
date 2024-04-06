@@ -38,7 +38,7 @@
           run: | 
             cd Test
             mkdir -p reports
-            python -m pytest -vs -m smoke --browser=edge --html=reports/report_action.html --html-plugin=custom_pytest_html_plugin.py --self-contained-html
+            python -m pytest -vs -m smoke --browser=edge --html=reports/report_action.html --self-contained-html --plugin=custom_pytest_html_plugin.py
 
         - name: Set output --> upload artifact
           uses: actions/upload-artifact@v3
