@@ -52,12 +52,13 @@
 #          run: |
 #            python modify_report_time.py
 
-        - name: Set output
-          if: success() || failure()
-          id: results
-          run: echo "artifactPath=Test/reports/" >> $GITHUB_OUTPUT
+#        - name: Set output
+#          if: success() || failure()
+#          id: results
+#          run: echo "artifactPath=Test/reports/" >> $GITHUB_OUTPUT
 
-        - uses: actions/upload-artifact@v3
+        - name: Set output --> upload artifact
+          uses: actions/upload-artifact@v3
           if: success() || failure()
           with:
             name: test-report-hrms
