@@ -54,10 +54,7 @@
             echo "    <!-- Add more elements with UTC times and class='utc-time' -->"
             echo "  </body>"
             echo "</html>"
-            ) > report_action.html
-        
-        
-        
+            ) > report_action.html       
 
         #        - name: Set up runner
 #          run: |
