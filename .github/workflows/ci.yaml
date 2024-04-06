@@ -2,9 +2,8 @@
 
   on:
     schedule:
-    - cron: '50 14 * * *'
-    push:
-    pull_request:
+    - cron: '18 02 * * *'
+
 
 
   jobs:
