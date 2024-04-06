@@ -20,15 +20,42 @@
       runs-on: ${{ matrix.os }}
 
       steps:
-        - name: Retrieve current Date Time in Singapore TimeZone
-          shell: bash
-          run: echo "START_TIME=$(TZ=":Asia/Jakarta" date -R|sed 's/.....$//')" >> $GITHUB_ENV
-
-        - name: print date
-          run: echo ${{ env.START_TIME }}
 
         - name: Checkout code
           uses: actions/checkout@v3
+
+        - name: Generate HTML Report
+          run: |
+            @echo off
+            (
+              echo ^<!DOCTYPE html^>
+              echo ^<html^>
+              echo   ^<head^>
+              echo     ^<title^>report_action.html^</title^>
+              echo     ^<script^>
+              echo       function convertToUTC7(utcTime) {^
+              echo           var date = new Date(utcTime);^
+              echo           var utcPlus7Time = new Date(date.getTime() + (7 * 60 * 60 * 1000));^
+              echo           return utcPlus7Time;^
+              echo       }^
+              echo
+              echo       document.addEventListener("DOMContentLoaded", function() {^
+              echo           var utcTimeElements = document.querySelectorAll(".utc-time");^
+              echo           utcTimeElements.forEach(function(element) {^
+              echo               var utcTime = element.textContent.trim();^
+              echo               var utcPlus7Time = convertToUTC7(utcTime);^
+              echo               element.textContent = utcPlus7Time.toISOString();^
+              echo           });^
+              echo       });^
+              echo     ^</script^>
+              echo   ^</head^>
+              echo   ^<body^>
+              echo     ^<h1^>HTML Report^</h1^>
+              echo     ^<p^>Last updated: ^<span class="utc-time"^>2024-01-28T12:00:00Z^</span^>^</p^>
+              echo     ^<!-- Add more elements with UTC times and class="utc-time" -->^
+              echo   ^</body^>
+              echo ^</html^>
+            ) > report.html
 
 #        - name: Set up runner
 #          run: |
