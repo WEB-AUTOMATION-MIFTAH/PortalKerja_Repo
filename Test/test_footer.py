@@ -4,7 +4,6 @@ from Test.object_instance import *
 @pytest.mark.usefixtures("setup_scope_class")
 class TestFooterUi(ObjectInstantiation):
 
-    @pytest.mark.smoke
     def test_precondition_step(self):
         self.login().admin_univ_already_login(1)
         print('Admin University Berhasil Login')
