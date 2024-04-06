@@ -31,7 +31,7 @@
 #            Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.315.0.zip", "$PWD")
 
         - name: Set up Python
-          uses: actions/setup-python@v3.11
+          uses: actions/setup-python@v3.10
           with:
             python-version: ${{matrix.python-version}}
 
