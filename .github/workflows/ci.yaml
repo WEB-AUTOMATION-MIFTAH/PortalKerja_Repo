@@ -24,10 +24,6 @@
         - name: Checkout code
           uses: actions/checkout@v3
 
-        - name: Generate HTML Report
-          run: |
-            python modify_report_time.py
-
         #        - name: Set up runner
 #          run: |
 #            mkdir actions-runner
@@ -50,6 +46,10 @@
             cd Test
             mkdir -p reports
             python -m pytest -vs -m smoke --browser=edge --html=reports/report_action.html --self-contained-html
+
+        - name: Modify HTML Report
+          run: |
+            python modify_report_time.py
 
         - name: Set output
           if: success() || failure()

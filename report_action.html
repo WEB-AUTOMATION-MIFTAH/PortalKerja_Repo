@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Report</title>
+    <script>
+        function convertToUTC7(utcTime) {
+            var date = new Date(utcTime);
+            var utcPlus7Time = new Date(date.getTime() + (7 * 60 * 60 * 1000));
+            return utcPlus7Time;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var utcTimeElements = document.querySelectorAll('.utc-time');
+            utcTimeElements.forEach(function(element) {
+                var utcTime = element.textContent.trim();
+                var utcPlus7Time = convertToUTC7(utcTime);
+                element.textContent = utcPlus7Time.toLocaleString();
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>HTML Report</h1>
+    <p>Last updated: <span class="utc-time">2024-04-07T06:40:28Z</span></p>
+    <!-- Add more elements with UTC times and class="utc-time" -->
+</body>
+</html>
