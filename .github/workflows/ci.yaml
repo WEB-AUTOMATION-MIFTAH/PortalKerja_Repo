@@ -27,7 +27,8 @@
         - name: Generate HTML Report
           run: |
             cp templates/report_template.html report_action.html
-            powershell -Command "(Get-Content report_action.html) -replace '2024-01-28T12:00:00Z', (Get-Date).ToString('yyyy-MM-ddTHH:mm:ssZ') | Set-Content report_action.html"
+            powershell -Command "(Get-Content report_action.html) -replace '<!-- Add more elements with UTC times and class=\"utc-time\" -->', '<!-- Add more elements with UTC times and class=\"utc-time\" -->' | Set-Content report_action.html"
+            powershell -Command "(Get-Content report_action.html) -replace '2024-01-28T12:00:00Z', ((Get-Date).ToUniversalTime()).AddHours(7).ToString('yyyy-MM-ddTHH:mm:ssZ') | Set-Content report_action.html"
 
         #        - name: Set up runner
 #          run: |
