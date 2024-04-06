@@ -47,4 +47,4 @@
             python -m pip install selenium
 
         - name: Run tests
-          run: pytest -vs
+          run: python -m pytest -vs
