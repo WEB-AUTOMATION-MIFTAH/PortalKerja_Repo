@@ -26,7 +26,6 @@
 
         - name: Generate HTML Report
           run: |
-            @echo off
             (
               echo ^<!DOCTYPE html^>
               echo ^<html^>
