@@ -45,4 +45,4 @@
           if: success() || failure()
           with:
             name: test-report-hrms
-            path: Test/Test/reports/report_action.html
+            path: Test/reports/report_action.html
