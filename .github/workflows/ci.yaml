@@ -52,8 +52,8 @@
         - name: Send email
           uses: dawidd6/action-send-mail@v3.7.1
           with:
-            server_address: smtp.gmail.com
-            server_port: 465
+            server_address: smtp.mailgun.org
+            server_port: 587
             username: ${{ secrets.GMAIL_USERNAME }}
             password: ${{ secrets.GMAIL_PWD }}
             subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
@@ -70,10 +70,10 @@
               QA Engineer - PT VPN
             to: ramadhanz@example.com
             from: ${{ secrets.GMAIL_USERNAME }}
-            secure: true
-            ignore_cert: true
-            convert_markdown: true
-            priority: low
+#            secure: true
+#            ignore_cert: true
+#            convert_markdown: true
+#            priority: low
             attachments: Test/reports/report_action.html
 
 
