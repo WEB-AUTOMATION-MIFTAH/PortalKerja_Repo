@@ -2,11 +2,13 @@
 
   on:
     push:
+      branches: [ main ]
     schedule:
     - cron: '00 05 * * *'
 
   jobs:
     run-tests:
+      timeout-minutes: 60
       strategy:
         fail-fast: false
         matrix:
@@ -48,22 +50,31 @@
             path: Test/reports/report_action.html
 
         - name: Send email
-          uses: miftahramadhan90/PortalKerja_Repo@v3
+          uses: dawidd6/action-send-mail@v3.7.1
           with:
             server_address: smtp.gmail.com
-            server_port: 587
-            subject: Automation Report Execution
-            body: |
+            server_port: 465
+            smtp_user: ${{ secrets.GMAIL_USERNAME }}
+            smtp_password: ${{ secrets.GMAIL_PWD }}
+            subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+            body: |            
               Dear all,
               Berikut adalah hasil smoke test fitur-fitur utama portal kerja per hari ini
-              Terima kasih,
               
+              Detail Information: 
+                ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+              
+              Terima kasih,
               Regards,
               Miftah Ramadhan
               QA Engineer - PT VPN
-
+            to: ramadhanz@example.com
             from: ${{ secrets.GMAIL_USERNAME }}
-            to: ramadhanz@example.com, usahakunci@gmail.com
-            smtp_user: ${{ secrets.GMAIL_USERNAME }}
-            smtp_password: ${{ secrets.GMAIL_PWD }}
+            secure: true
+            ignore_cert: true
+            convert_markdown: true
+            priority: low
+            attachments: Test/reports/report_action.html
+
+
 
