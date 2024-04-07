@@ -46,3 +46,24 @@
           with:
             name: test-report-hrms
             path: Test/reports/report_action.html
+
+        - name: Send email
+          uses: miftahramadhan90/action-send-mail@v3
+          with:
+            server_address: smtp.gmail.com
+            server_port: 587
+            subject: Automation Report Execution
+            body: |
+              Dear all,
+              Berikut adalah hasil smoke test fitur-fitur utama portal kerja per hari ini
+              Terima kasih,
+              
+              Regards,
+              Miftah Ramadhan
+              QA Engineer - PT VPN
+
+            from: ${{ secrets.GMAIL_USERNAME }}
+            to: ramadhanz@example.com, usahakunci@gmail.com
+            smtp_user: ${{ secrets.GMAIL_USERNAME }}
+            smtp_password: ${{ secrets.GMAIL_PWD }}
+
