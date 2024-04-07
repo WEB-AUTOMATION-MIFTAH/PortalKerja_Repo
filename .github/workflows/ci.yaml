@@ -1,8 +1,9 @@
   name: Selenium_Python_CI
 
   on:
+    push:
     schedule:
-    - cron: '46 19 * * *'
+    - cron: '00 05 * * *'
 
   jobs:
     run-tests:
