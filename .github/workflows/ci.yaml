@@ -48,7 +48,7 @@
             path: Test/reports/report_action.html
 
         - name: Send email
-          uses: miftahramadhan90/action-send-mail@v3
+          uses: miftahramadhan90/PortalKerja_Repo@v3
           with:
             server_address: smtp.gmail.com
             server_port: 587
