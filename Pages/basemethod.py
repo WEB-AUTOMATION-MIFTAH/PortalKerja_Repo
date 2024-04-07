@@ -25,6 +25,10 @@ class CustomMethod:
     def clear_field(self, locator):
         WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator)).clear()
 
+    def get_attr_element(self, locator, attribute):
+        att = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
+        return att.get_attribute(attribute)
+
     def get_element_text(self, locator):
         element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
         return element.text
