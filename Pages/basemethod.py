@@ -25,50 +25,62 @@ class CustomMethod:
     def clear_field(self, locator):
         WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator)).clear()
 
+    def is_web_element_visible(self, locator):
+        element = WebDriverWait(self.driver, 60).until(EC.visibility_of_element_located(locator))
+        return bool(element)
+
+    # return objek instance dari kelas WebElement
+    def get_web_element(self, locator):
+        element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
+        return element
+
     def get_attr_element(self, locator, attribute):
         att = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
         return att.get_attribute(attribute)
 
-    def get_element_text(self, locator):
+    def get_text_of_element(self, locator):
         element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
         return element.text
 
-    def get_elements_text(self, locators):
+    def get_list_all_elements(self, locators):
         elements_lists = WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located(locators))
         return elements_lists
 
-    def is_visible(self, locator):
-        element = WebDriverWait(self.driver, 60).until(EC.visibility_of_element_located(locator))
-        return bool(element)
-
-    def find_element(self, locator):
-        element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
-        return element
-
-    def drag_drop_element(self, input_source_locator, input_target_locator):
+    def drag_and_drop(self, input_source_locator, input_target_locator):
         actions = ActionChains(self.driver)
-        source = self.find_element(input_source_locator)
-        target = self.find_element(input_target_locator)
+        source = self.get_web_element(input_source_locator)
+        target = self.get_web_element(input_target_locator)
         actions.drag_and_drop(source, target).perform()
 
-    def switch_frame(self, locator):
+    def switch_to_frame(self, locator):
         WebDriverWait(self.driver, 30).until(EC.frame_to_be_available_and_switch_to_it(locator))
 
     def switch_to_default_frame(self):
         self.driver.switch_to.default_content()
 
-    def accept_alert(self):
+    def accept_alert_js(self):
         alert_msg = self.driver.switch_to.alert
         alert_msg.accept()
 
-    def move_to_element(self, locators):
+    def enter_keyboard(self):
         actions = ActionChains(self.driver)
-        actions.move_to_element(self.find_element(locators)).perform()
-        time.sleep(1.5)
+        actions.send_keys(Keys.ENTER)
+        actions.perform()
 
-    def count_element(self, locator):
+    def back_to_previous_page(self):
+        self.driver.back()
+
+    def forward_to_next_page(self):
+        self.driver.forward()
+
+    def get_length_all_elements(self, locator):
         element = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located(locator))
         return len(element)
+
+    def move_to_element(self, locators):
+        actions = ActionChains(self.driver)
+        actions.move_to_element(self.get_web_element(locators)).perform()
+        time.sleep(1.5)
 
     def scroll_down_page(self):
         actions = ActionChains(self.driver)
@@ -79,14 +91,3 @@ class CustomMethod:
         actions = ActionChains(self.driver)
         actions.send_keys(Keys.PAGE_UP)
         actions.perform()
-
-    def press_enter_keyboard(self):
-        actions = ActionChains(self.driver)
-        actions.send_keys(Keys.ENTER)
-        actions.perform()
-
-    def back_to_previous_page(self):
-        self.driver.back()
-
-    def forward_to_next_page(self):
-        self.driver.forward()
