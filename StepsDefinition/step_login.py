@@ -10,20 +10,24 @@ class StepDefLogin(CustomMethod, LocatorLoginPage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def check_email_field(self):
-        pass
-
-    def check_pwd_field(self):
-        pass
-
-    def check_login_btn(self):
-        pass
-
-    def check_logo(self):
-        pass
-
-    def user_do_login(self, fill_in_email, fill_in_Passwd):
+    def check_email_field_is_exist(self):
         self.click_to(self.LOC_LOGIN_NAV_BTN)
-        self.fill_in(self.LOC_EMAIL_FIELD, fill_in_email)
-        self.fill_in(self.LOC_PWD_FIELD, fill_in_Passwd)
+        self.is_web_element_visible(self.LOC_EMAIL_FIELD)
+
+    def check_pwd_field_is_exist(self):
+        self.click_to(self.LOC_LOGIN_NAV_BTN)
+        self.is_web_element_visible(self.LOC_PWD_FIELD)
+
+    def check_login_btn_is_exist(self):
+        self.click_to(self.LOC_LOGIN_NAV_BTN)
+        self.is_web_element_visible(self.LOC_LOGIN_BTN)
+
+    def check_logo_is_exist(self):
+        self.click_to(self.LOC_LOGIN_NAV_BTN)
+        self.is_web_element_visible(self.LOC_LOGO_POKER)
+
+    def user_do_login(self, email, password):
+        self.click_to(self.LOC_LOGIN_NAV_BTN)
+        self.fill_in(self.LOC_EMAIL_FIELD, email)
+        self.fill_in(self.LOC_PWD_FIELD, password)
         self.click_to(self.LOC_LOGIN_BTN)
