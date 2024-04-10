@@ -34,9 +34,9 @@ class CustomMethod:
         element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
         return element
 
-    def get_attr_element(self, locator, attribute):
-        att = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
-        return att.get_attribute(attribute)
+    def get_attr_element(self, locator, attrib):
+        attribute = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator)).get_attribute(attrib)
+        return attribute
 
     def get_text_of_element(self, locator):
         element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))

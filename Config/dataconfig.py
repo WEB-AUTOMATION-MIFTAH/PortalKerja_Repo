@@ -1,5 +1,4 @@
 class TestData:
-
     """this is base of url"""
     BASE_URL_STAGING = "https://accel.id"
     BASE_URL_UAT = ""
