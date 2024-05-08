@@ -1,10 +1,6 @@
   name: Portal Kerja Web UI Automation
 
   on:
-    #    push:
-    #      branches: [ main ]
-    #    schedule:
-    #    - cron: '00 05 * * *'
     workflow_dispatch:
       inputs:
         loglevel:
@@ -14,6 +10,11 @@
         tags:
           description: 'Dev Development Tags'
 
+    push:
+      branches: [ main ]
+
+    schedule:
+      - cron: '00 05 * * *'
   jobs:
     run-tests:
       timeout-minutes: 180
