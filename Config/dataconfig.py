@@ -17,7 +17,7 @@ class TestData:
     JOB_POSTERADM_HRMS_EMPLOYEE = ""
 
     """This is General Password"""
-    VALID_PASSWORD = "Password123*"
-    INVALID_PASSWORD = "invalid123"
+    VALID_PASSWORD = ""
+    INVALID_PASSWORD = ""
     BLANK_PASSWORD = ""
 
