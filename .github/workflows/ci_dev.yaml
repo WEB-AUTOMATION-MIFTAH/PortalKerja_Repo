@@ -9,14 +9,14 @@
           default: 'warning'
         tags:
           description: 'Dev Development Tags'
-#    push:
-#      branches: [ main ]
+    push:
+      branches: [ main ]
 
 #    schedule:
 #      - cron: '00 05 * * *'
   jobs:
     run-tests:
-      timeout-minutes: 180
+      timeout-minutes: 240
       strategy:
         fail-fast: false
         matrix:
@@ -48,7 +48,7 @@
           run: | 
             cd Test
             mkdir -p reports
-            python -m pytest -vs -m smoke --browser=chrome --html=reports/report_action.html --self-contained-html
+            python -m pytest -vs --browser=chrome --url=dev --html=reports/report_action.html --self-contained-html
 
         - name: Set output --> upload artifact
           uses: actions/upload-artifact@v3
