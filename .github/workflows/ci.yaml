@@ -10,11 +10,11 @@
         tags:
           description: 'Dev Development Tags'
 
-    push:
-      branches: [ main ]
+#    push:
+#      branches: [ main ]
 
-    schedule:
-      - cron: '00 05 * * *'
+#    schedule:
+#      - cron: '00 05 * * *'
   jobs:
     run-tests:
       timeout-minutes: 180

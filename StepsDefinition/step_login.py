@@ -19,9 +19,6 @@ class StepDefLogin(CustomMethod, LocatorLoginModal):
     def check_login_btn_is_exist(self):
         self.is_web_element_visible(self.LOC_LOGIN_BTN)
 
-    def check_logo_is_exist(self):
-        self.is_web_element_visible(self.LOC_LOGO_POKER)
-
     def user_do_login(self, email, password):
         self.fill_in(self.LOC_EMAIL_FIELD, email)
         self.fill_in(self.LOC_PWD_FIELD, password)
