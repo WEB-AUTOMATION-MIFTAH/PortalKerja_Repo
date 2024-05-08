@@ -1,0 +1,62 @@
+  name: Portal Kerja Web UI Automation
+
+  on:
+    workflow_dispatch:
+      inputs:
+        loglevel:
+          description: 'log level'
+          required: true
+          default: 'warning'
+        tags:
+          description: 'Dev Development Tags'
+    push:
+      branches: [ main ]
+
+#    schedule:
+#      - cron: '00 05 * * *'
+  jobs:
+    run-tests:
+      timeout-minutes: 240
+      strategy:
+        fail-fast: false
+        matrix:
+          os: [windows-latest]
+          python-versions:
+            - "3.11"
+
+      name: Test_Portal_Kerja
+      runs-on: ${{ matrix.os }}
+
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        - name: Set up Python
+          uses: actions/setup-python@v3
+          with:
+            python-version: ${{matrix.python-version}}
+
+        - name: install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            python -m pip install -r requirements.txt
+
+        - name: Set Time Windows Server
+          run: tzutil /s "SE Asia Standard Time"
+
+        - name: Run tests
+          run: | 
+            cd Test
+            mkdir -p reports
+            python -m pytest -vs -m smoke --browser=chrome --url=prod --html=reports/report_action.html --self-contained-html
+
+        - name: Set output --> upload artifact
+          uses: actions/upload-artifact@v3
+          if: success() || failure()
+          with:
+            name: test-report-hrms
+            path: Test/reports/report_action.html
+
+
+
+

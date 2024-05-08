@@ -13,15 +13,15 @@ from Config.dataconfig import TestData
 
 '''Untuk argumen tambahan saat running pytest pilih browser apa, example : pytest --browser=chrome -vs dst.... '''
 def pytest_addoption(parser):
-    parser.addoption(
-        "--browser", action="store", default="chrome"
-    )
+    parser.addoption("--browser", action="store", default="chrome")
+    parser.addoption("--url", action="store", default="dev")
 
 '''Fixture untuk scope : TEST FUNCTION'''
 @pytest.fixture()
 def setup_scope_function(request):
     web_driver = None
     browser = request.config.getoption("browser")
+    url = request.config.getoption("url")
 
     if browser == "chrome":
         options = webdriver.ChromeOptions()
@@ -30,26 +30,32 @@ def setup_scope_function(request):
         options.add_argument("--disable-notifications")  # for chrome only
         options.add_argument("--start-maximized")
         options.add_argument('--log-level=3')
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         web_driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-    elif browser == "firefox":
-        web_driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
+
     elif browser == "edge":
         web_driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
 
     web_driver.maximize_window()
-    web_driver.get(TestData.BASE_URL_STAGING)
+
+    if url == "dev":
+        web_driver.get(TestData.BASE_URL_DEV)
+    elif url == "staging":
+        web_driver.get(TestData.BASE_URL_STAGING)
+    elif url == "prod":
+        web_driver.get(TestData.BASE_URL_PROD)
+
     request.cls.driver = web_driver
     yield
     time.sleep(1.5)
     web_driver.quit()
-
 
 '''Fixture untuk scope : TEST CLASS'''
 @pytest.fixture(scope="class")
 def setup_scope_class(request):
     web_driver = None
     browser = request.config.getoption("browser")
+    url = request.config.getoption("url")
 
     if browser == "chrome":
         options = webdriver.ChromeOptions()
@@ -58,15 +64,22 @@ def setup_scope_class(request):
         options.add_argument("--disable-notifications")  # for chrome only
         options.add_argument("--start-maximized")
         options.add_argument('--log-level=3')
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         web_driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-    elif browser == "firefox":
-        web_driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
+
     elif browser == "edge":
         web_driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
 
     web_driver.maximize_window()
-    web_driver.get(TestData.BASE_URL_STAGING)
+
+    if url == "dev":
+        web_driver.get(TestData.BASE_URL_DEV)
+    elif url == "staging":
+        web_driver.get(TestData.BASE_URL_STAGING)
+    elif url == "prod":
+        web_driver.get(TestData.BASE_URL_PROD)
+
     request.cls.driver = web_driver
     yield
+    time.sleep(1.5)
     web_driver.quit()
