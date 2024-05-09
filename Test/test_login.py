@@ -17,7 +17,7 @@ class TestLoginModalUi(ObjectInstantiation):
     def test_tc_03_there_is_login_button(self):
         self.login().check_login_btn_is_exist()
 
-@pytest.mark.smoke
+# @pytest.mark.smoke
 @pytest.mark.usefixtures("setup_scope_function")
 class TestLoginModalFunctionality(ObjectInstantiation):
 
