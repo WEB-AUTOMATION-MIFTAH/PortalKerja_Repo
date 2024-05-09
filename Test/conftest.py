@@ -1,20 +1,35 @@
+import os
+import sys
 import time
-
 import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.edge.service import Service
 from Config.dataconfig import TestData
+import pytest
+from platform import python_version, system
+import platform
 
-
-'''Untuk argumen tambahan saat running pytest pilih browser apa, example : pytest --browser=chrome -vs dst.... '''
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
     parser.addoption("--url", action="store", default="dev")
+
+def pytest_html_report_title(report):
+    report.title = "["+report.config.getoption("--url") + " env] "+"Automation Testing Report of WEB HRMS"
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_metadata(metadata):
+    keys_to_remove = ['Python', 'Platform', 'Packages', 'JAVA_HOME', 'Plugins']
+    for key in keys_to_remove:
+        if key in metadata:
+            del metadata[key]
+
+    metadata['Python Ver.'] = python_version()
+    metadata['Pytest Framework Ver.'] = pytest.__version__
+    metadata['Platform OS'] = "{} {} {} {}".format(system(), platform.release(), platform.version(), platform.machine())
 
 '''Fixture untuk scope : TEST FUNCTION'''
 @pytest.fixture()
@@ -30,7 +45,7 @@ def setup_scope_function(request):
         options.add_argument("--disable-notifications")  # for chrome only
         options.add_argument("--start-maximized")
         options.add_argument('--log-level=3')
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         web_driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     elif browser == "edge":
@@ -64,7 +79,7 @@ def setup_scope_class(request):
         options.add_argument("--disable-notifications")  # for chrome only
         options.add_argument("--start-maximized")
         options.add_argument('--log-level=3')
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         web_driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     elif browser == "edge":

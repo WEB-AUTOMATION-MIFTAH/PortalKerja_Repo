@@ -23,5 +23,5 @@ class TestLoginModalFunctionality(ObjectInstantiation):
 
     def test_login_superadmin(self):
         self.navbar().click_to_login_btn()
-        self.login().user_do_login('visiprimaqa+27@gmail.com', 'Password123!')
+        self.login().user_do_login('visiprimaqa+271@gmail.com', 'Password123!')
         self.navbar().check_logo_is_exist()
