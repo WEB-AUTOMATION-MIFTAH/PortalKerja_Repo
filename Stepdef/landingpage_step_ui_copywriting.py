@@ -1,10 +1,7 @@
-from Config import dataconfig
 from Pages.basemethod import CustomMethod
-from Pages.dashboard import LocatorNavbar
-from Pages.login import LocatorLoginModal
-from Pages.selectroleregister import LocatorSelectRoleReg
+from Pages.landingpage import *
 
-class StepdefNavbarDefault(CustomMethod, LocatorNavbar, LocatorLoginModal, LocatorSelectRoleReg):
+class StepLandingPage(CustomMethod, LocNavbarLandingPage, LocBodyLandingPage, LocFooterLandingPage):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -30,9 +27,6 @@ class StepdefNavbarDefault(CustomMethod, LocatorNavbar, LocatorLoginModal, Locat
         self.change_language_to_english()
         txt_eng = self.get_text_of_element(self.LOC_JOBS_NAV)
         assert txt_eng == 'Jobs', 'Copywriting-English tidak sesuai'
-
-    def click_dropdown_language(self):
-        self.click_to(self.LOC_FLAG_DROPDOWN)
 
     def change_language_to_english(self):
         self.click_to(self.LOC_FLAG_DROPDOWN)
@@ -77,14 +71,6 @@ class StepdefNavbarDefault(CustomMethod, LocatorNavbar, LocatorLoginModal, Locat
         self.change_language_to_english()
         txt_eng = self.get_text_of_element(self.LOC_SIGNUP_BTN)
         assert txt_eng == 'Sign Up', 'Copywriting englisg is not correct'
-
-    def click_to_login_btn(self):
-        self.click_to(self.LOC_LOGIN_BTN)
-        self.is_web_element_visible(self.LOC_MODAL_LOGIN)
-
-    def click_to_signup_btn(self):
-        self.click_to(self.LOC_SIGNUP_BTN)
-        self.is_web_element_visible(self.LOC_TITLE)
 
 
 

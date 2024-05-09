@@ -1,5 +1,7 @@
-from StepsDefinition.step_navbar import StepdefNavbarDefault
-from StepsDefinition.step_login import *
+from Stepdef.login_step_functionality import *
+from Stepdef.login_step_ui_copywriting import *
+from Stepdef.landingpage_step_ui_copywriting import *
+from Stepdef.landingpage_step_functionality import *
 
 class ObjectInstantiation:
     def login(self):
@@ -7,13 +9,5 @@ class ObjectInstantiation:
         return login
 
     def navbar(self):
-        navbar = StepdefNavbarDefault(self.driver)
+        navbar = StepLandingPage(self.driver)
         return navbar
-
-    def footer(self):
-        footer = StepDefFooter(self.driver)
-        return footer
-
-    def privacy(self):
-        privacy = StepDefPrivacyPolicyPage(self.driver)
-        return privacy

@@ -1,3 +1,5 @@
 unittst.py
 reports
-reports.html
+*.html
+.pytest_cache
+venv

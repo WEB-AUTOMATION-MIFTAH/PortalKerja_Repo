@@ -3,7 +3,7 @@ from Test.object_instance import ObjectInstantiation
 
 @pytest.mark.smoke
 @pytest.mark.usefixtures("setup_scope_class")
-class TestNavbarUi(ObjectInstantiation):
+class TestUIandCopywritingOfLandingPage(ObjectInstantiation):
     def test_tc_n001_there_is_logo(self):
         self.navbar().check_logo_is_exist()
 

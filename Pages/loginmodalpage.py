@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-class LocatorLoginModal:
+class LocLoginPage:
     LOC_MODAL_LOGIN = (By.XPATH, '//div[@class="modal-body"]')
     LOC_TXT_TITLE_MDL = (By.XPATH, '//div[@class="modal-body"]/form/div/h4]')
     LOC_TXT_SUBTIT_MDL = (By.XPATH, '//div[@class="modal-body"]/form/div[1]/div/span')  # assert txt : 'Silakan masuk dengan akun\natau akun'
@@ -9,3 +9,5 @@ class LocatorLoginModal:
     LOC_EMAIL_FIELD = (By.XPATH, '//input[@id="login"]')
     LOC_PWD_FIELD = (By.XPATH, '//input[@id="password"]')
     LOC_LOGIN_BTN = (By.XPATH, '//div[@class="modal-body"]/form/div[5]')
+    LOC_SIGNUP_FREE_NOW = ''
+
