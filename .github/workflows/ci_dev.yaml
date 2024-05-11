@@ -43,11 +43,13 @@
           run: tzutil /s "SE Asia Standard Time"
 
         - name: Set var secret from Github Action Secret
-          run: |
-            echo "PWD_SUPERADMIN=${{ secrets.PASS_SUPERADM }}" >> $GITHUB_ENV
+          shell: bash
+          run: echo "$env:PWD_SUPERADMIN"
+          env:
+            PWD_SUPERADMIN: ${{ toJson(secrets) }}
 
         - name: Print secret value
-          run: Write-Output $env:PWD_SUPERADMIN
+          run: echo "$env:PWD_SUPERADMIN=PASS_SUPERADM" >>$GITHUB_ENV
           shell: pwsh
 
         - name: Run Test - Selenium with Pytest
