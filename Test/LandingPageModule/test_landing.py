@@ -4,6 +4,15 @@ from Test.object_instance import ObjectInstantiation
 @pytest.mark.usefixtures("setup_scope_function")
 class TestFunction(ObjectInstantiation):
 
+    @pytest.mark.smoke
+    def test_verify_that_logo_on_the_navbar_can_clicked(self):
+        self.landingf().click_to_jobs_menu()
+        self.landingf().click_to_logo_navbar()
+
+    @pytest.mark.smoke
+    def test_click_jobs(self):
+        self.landingf().click_to_jobs_menu()
+
     def test_tc_n004_default_language(self):
         self.landingf().check_default_selected_languange_is_indonesia()
 
@@ -24,7 +33,7 @@ class TestUI(ObjectInstantiation):
         self.landingui().check_nav_menu_jobs_is_exist()
 
     def test_tc_n003_nav_menu_in_two_language(self):
-        self.landingui().check_nav_menu_jobs_in_two_languange()
+        self.landingui().check_copywriting_of_Jobs_menu_on_the_navbar()
 
     def test_tc_005_thereis_login_btn(self):
         self.landingui().check_login_btn_is_exist()

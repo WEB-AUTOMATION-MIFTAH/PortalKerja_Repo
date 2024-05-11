@@ -19,3 +19,4 @@ class LocLandingPage:
     # BODY SECTION
 
     # FOOTER SECTION
+    LOC_SITELINKS_TXT = (By.XPATH, '//div[@class="fc-early-mid"]')

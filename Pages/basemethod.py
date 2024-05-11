@@ -42,8 +42,12 @@ class CustomMethod:
         element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(locator))
         return element.text
 
+    def get_texts_of_all_elements(self, locator):
+        elements = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located(locator))
+        return elements
+
     def get_list_all_elements(self, locators):
-        elements_lists = WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located(locators))
+        elements_lists = WebDriverWait(self.driver, 30).until(EC.visibility_of_all_elements_located(locators))
         return elements_lists
 
     def drag_and_drop(self, input_source_locator, input_target_locator):

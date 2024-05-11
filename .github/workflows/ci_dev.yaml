@@ -48,7 +48,7 @@
           run: | 
             cd Test
             mkdir -p reports
-            python -m pytest -vs --browser=chrome --url=dev --html=reports/report_in_dev.html --self-contained-html
+            python -m pytest -vs --browser=chrome -m smoke --url=dev --html=reports/report_in_dev.html --self-contained-html
 
         - name: Set output --> upload artifact
           uses: actions/upload-artifact@v3
