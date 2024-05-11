@@ -43,14 +43,10 @@
           run: tzutil /s "SE Asia Standard Time"
 
         - name: Set var secret from Github Action Secret
-          shell: bash
-          run: echo "$env:PWD_SUPERADMIN"
-          env:
-            PWD_SUPERADMIN: ${{ toJson(secrets) }}
-
-        - name: Print secret value
-          run: echo "$env:PWD_SUPERADMIN=PASS_SUPERADM" >>$GITHUB_ENV
-          shell: pwsh
+          shell: powershell
+          run: | 
+            [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", "${{ secrets.PASS_SUPERADM }}" >>$GITHUB_ENV, "Machine")
+            Get-ChildItem Env:PWD_SUPERADMIN
 
         - name: Run Test - Selenium with Pytest
           run: | 
