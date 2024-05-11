@@ -48,7 +48,7 @@
 
         - name: Print secret value
           run: echo $env:PWD_SUPERADMIN
-          shell: powershell
+          shell: pwsh
 
         - name: Run Test - Selenium with Pytest
           run: | 
