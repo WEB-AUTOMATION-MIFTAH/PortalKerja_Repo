@@ -44,7 +44,7 @@
 
         - name: Set var secret from Github Action Secret
           run: |
-            echo "PWD_SUPERADMIN=${{ secret.PASS_SUPERADM }}" >> $GITHUB_ENV
+            echo "PWD_SUPERADMIN=${{ secrets.PASS_SUPERADM }}" >> $GITHUB_ENV
 
         - name: Run Test - Selenium with Pytest
           run: | 
