@@ -42,11 +42,12 @@
         - name: Set Time Windows Server
           run: tzutil /s "SE Asia Standard Time"
 
-        - name: Set var secret from Github Action Secret
+        - name: Set secret
           shell: powershell
-          run: | 
-            [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", "${{ secrets.PASS_SUPERADM }}" >>$GITHUB_ENV, "Machine")
-            Get-ChildItem Env:PWD_SUPERADMIN
+          run: |
+            $secretValue = "${{ secrets.PASS_SUPERADM }}"
+            [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", $secretValue, "Machine")
+            Add-Content -Path $env:GITHUB_ENV -Name "PWD_SUPERADMIN=$secretValue"
 
         - name: Run Test - Selenium with Pytest
           run: | 
