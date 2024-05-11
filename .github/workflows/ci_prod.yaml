@@ -24,7 +24,7 @@
           python-versions:
             - "3.11"
 
-      name: [PROD ENV] Test HRMS Portal Kerja
+      name: (PROD ENV) Test HRMS Portal Kerja
       runs-on: ${{ matrix.os }}
 
       steps:
