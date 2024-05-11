@@ -1,4 +1,4 @@
-  name: Portal Kerja Web UI Automation - DEV Env
+  name: DEV - HRMS Web Automation Testing
 
   on:
     workflow_dispatch:
@@ -42,7 +42,11 @@
         - name: Set Time Windows Server
           run: tzutil /s "SE Asia Standard Time"
 
-        - name: Run tests
+        - name: Set var secret from Github Action Secret
+          run: |
+            echo "PWD_SUPERADMIN=${{ secret.PASS_SUPERADM }}" >> $GITHUB_ENV
+
+        - name: Run Test - Selenium with Pytest
           run: | 
             cd Test
             mkdir -p reports
@@ -52,7 +56,7 @@
           uses: actions/upload-artifact@v3
           if: success() || failure()
           with:
-            name: HRMS Test Report In DEV
+            name: DEV_HRMS_Web_Automation_Test_Report
             path: Test/reports/report_in_dev.html
 
 
