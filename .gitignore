@@ -1,6 +1,5 @@
-internal_check_only.py
-internal_check_only
-E:\MyREPO_ORG\PortalKerja_Repo\Test\internal_check_only.py
+Test/recheck_code.py
+recheck_code.py
 reports
 *.html
 .pytest_cache
