@@ -46,6 +46,9 @@
           run: |
             echo "PWD_SUPERADMIN=${{ secrets.PASS_SUPERADM }}" >> $GITHUB_ENV
 
+        - name: Print secret value
+          run: echo $PWD_SUPERADMIN
+
         - name: Run Test - Selenium with Pytest
           run: | 
             cd Test
