@@ -32,7 +32,6 @@ class TestNavbarFunctionality(ObjectInstantiation):
     def test_tc_n004_default_language(self):
         self.navbar().check_default_selected_languange_is_indonesia()
 
-    @pytest.mark.debug
     def test_tc_n009_dropdown_language_is_able_to_click(self):
         self.navbar().click_dropdown_language()
         self.navbar().check_option_list_indonesia_is_exist()
