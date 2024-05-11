@@ -6,7 +6,7 @@ from Test.object_instance import ObjectInstantiation
 class TestLoginModalUi(ObjectInstantiation):
 
     def test_precondition_to_access_login_modal(self):
-        self.navbar().click_to_login_btn()
+        self.landingui.click_to_login_btn()
 
     def test_tc_01_there_is_emailfield(self):
         self.login().check_email_field_is_exist()
@@ -22,5 +22,5 @@ class TestLoginModalUi(ObjectInstantiation):
 class TestLoginModalFunctionality(ObjectInstantiation):
 
     def test_login_superadmin(self):
-        self.navbar().click_to_login_btn()
+        self.landingui.click_to_login_btn()
         self.login().user_do_login('visiprimaqa+27@gmail.com', 'Password123!')

@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 
-class LocNavbarLandingPage:
+class LocLandingPage:
+
+    # NAVBAR SECTION
     LOC_LOGO_POKER = (By.XPATH, '//a[@href="/"]/img')                               # https://accel.id/static/media/homepage.16a45bfff1b9bd7c53961981fb422708.svg
     LOC_JOBS_NAV = (By.XPATH, '//a[@class="hn-menu-item "]/h5')                     # Pekerjaan | Jobs
     LOC_SELECTED_FLAG = (By.XPATH, '//div[@class="flex-all-center"]/img')           # assert attr src img default indonesia: src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAILSURBVHgBtZRPTxNBGMafmW5BjcYajBrlsBsPetRovPQgn8AS/QJ40XhQuJO4VOPdPxc8wRdAAT8AHOSA0cjJxFNXU6zaNrNImxY6u6/7jpJo2oVCt7/DZndn5nlm5v0jsAsFRRloTAilrsv1r7ZoNm0zoLUfXLi4JoaG5kOJBeeE8OI0RIywLTRmrMW5kYHFV0h9eNdxcXDlGrZv3ITO3ZqlFPKdjNoMCj9pwlpdcQ89nszIb+vohvDsOTQePvGDq9m8c0Y8jTUolGlqcPq5O/jyBQ7C1t37aNx5kD9/Wkzt/LPwz857EWf+rnUL38nfOYk5Ad+59Xbl45F7YxkkQH161g+y2cscE2lcApg7R0IcfjTJ2TfD79LsfmFurNuAdgNrpaMM5DSXMkSOUzFp0m9eR/WCcUlVNRqX571gvV+FUNURmfr86RL6hCgWbQnLSiy4bQZbTVuUfKJTm0X0gx903BSaJ4eHbfQBsQFfag0PfaKlsSZDgeVmC4nDmhRiXnAxHE1BnTyGRKlsArU6HPPhlWmppSkxWCtqnn9aBT9I43alDh8JUalFWgHy//3kdq3q1DOsEWmNd3T+UiW3FxMjXiZ31+PxSUobpPYTE54bFayK3XmbSYlsDlL5F1FjO16Yx3hOtOslXtNJS+xlJAeQE4TRtAVuiqZvEcHTAbyAsIwanjmOiE2Q33AzE0/WcWLAAAAAAElFTkSuQmCC
@@ -14,8 +16,6 @@ class LocNavbarLandingPage:
     LOC_LOGIN_BTN = (By.XPATH, '//button[@class="J-btnComp-outline  sm"]/span')     # Masuk | Login
     LOC_SIGNUP_BTN = (By.XPATH, '//button[@class="J-btnComp-primary  sm"]/span')    # Daftar | Sign Up
 
-class LocBodyLandingPage:
-    pass
+    # BODY SECTION
 
-class LocFooterLandingPage:
-    pass
+    # FOOTER SECTION

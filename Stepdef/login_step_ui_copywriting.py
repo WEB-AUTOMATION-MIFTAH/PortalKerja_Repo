@@ -1,7 +1,6 @@
-from Pages.basemethod import CustomMethod
-from Pages.loginmodalpage import LocLoginPage
+from Stepdef.login_step_functionality import StepLoginFunc
 
-class StepDefLogin(CustomMethod, LocLoginPage):
+class StepLoginUI(StepLoginFunc):
 
     def __init__(self, driver):
         super().__init__(driver)

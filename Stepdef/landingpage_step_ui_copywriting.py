@@ -1,7 +1,6 @@
-from Pages.basemethod import CustomMethod
-from Pages.landingpage import *
+from Stepdef.landingpage_step_functionality import StepLandingFunc
 
-class StepLandingPage(CustomMethod, LocNavbarLandingPage, LocBodyLandingPage, LocFooterLandingPage):
+class StepLandingUI(StepLandingFunc):
 
     def __init__(self, driver):
         super().__init__(driver)

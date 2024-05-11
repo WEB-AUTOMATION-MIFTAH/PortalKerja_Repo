@@ -1,7 +1,7 @@
 from Pages.basemethod import CustomMethod
 from Pages.loginmodalpage import LocLoginPage
 
-class StepDefLogin(CustomMethod, LocLoginPage):
+class StepLoginFunc(CustomMethod, LocLoginPage):
 
     def __init__(self, driver):
         super().__init__(driver)

@@ -1,13 +1,27 @@
-from Stepdef.login_step_functionality import *
-from Stepdef.login_step_ui_copywriting import *
-from Stepdef.landingpage_step_ui_copywriting import *
-from Stepdef.landingpage_step_functionality import *
+# import semua step module via > Test/__init__.py
+from Test import *
 
 class ObjectInstantiation:
-    def login(self):
-        login = StepDefLogin(self.driver)
+
+    # Landing
+    def landingf(self):
+        landingfunc = StepLandingFunc(self.driver)
+        return landingfunc
+
+    def landingui(self):
+        landingui = StepLandingUI(self.driver)
+        return landingui
+
+    # Login
+    def loginf(self):
+        login = StepLoginFunc(self.driver)
         return login
 
-    def navbar(self):
-        navbar = StepLandingPage(self.driver)
-        return navbar
+    def loginui(self):
+        login = StepLoginUI(self.driver)
+        return login
+
+
+
+
+
