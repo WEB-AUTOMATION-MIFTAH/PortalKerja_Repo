@@ -47,7 +47,7 @@
             echo "PWD_SUPERADMIN=${{ secrets.PASS_SUPERADM }}" >> $GITHUB_ENV
 
         - name: Print secret value
-          run: echo $env:PWD_SUPERADMIN
+          run: Write-Host $env:PWD_SUPERADMIN
           shell: pwsh
 
         - name: Run Test - Selenium with Pytest
