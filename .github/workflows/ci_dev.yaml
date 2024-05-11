@@ -56,7 +56,7 @@
             python -m pytest -vs --browser=chrome -m smoke --url=dev --html=reports/report_in_dev.html --self-contained-html
 
         - name: Set output --> upload artifact
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           if: success() || failure()
           with:
             name: DEV_HRMS_Web_Automation_Test_Report
