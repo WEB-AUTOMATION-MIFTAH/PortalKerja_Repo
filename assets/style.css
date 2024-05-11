@@ -50,7 +50,6 @@ table {
 span.passed,
 .passed .col-result {
   color: green;
-  font-weight: bold;
 }
 
 span.skipped,
@@ -88,7 +87,7 @@ span.xpassed,
  *------------------*/
 #results-table {
   border: 1px solid #e6e6e6;
-  color: black;
+  color: #999;
   font-size: 12px;
   width: 100%;
 }
