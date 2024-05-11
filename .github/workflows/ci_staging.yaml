@@ -1,4 +1,4 @@
-  name: Portal Kerja Web UI Automation
+  name: Portal Kerja Web UI Automation - STAGING Env
 
   on:
     workflow_dispatch:
