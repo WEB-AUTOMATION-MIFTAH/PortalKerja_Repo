@@ -47,7 +47,7 @@
           run: |
             $secretValue = "${{ secrets.PASS_SUPERADM }}"
             [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", $secretValue, "Machine")
-            Add-Content -Path $env:GITHUB_ENV -Name "PWD_SUPERADMIN=$secretValue"
+            Add-Content -Path $env:GITHUB_ENV "PWD_SUPERADMIN=$secretValue"
 
         - name: Run Test - Selenium with Pytest
           run: | 
