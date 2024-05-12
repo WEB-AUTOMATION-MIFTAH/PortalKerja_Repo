@@ -48,6 +48,9 @@
             $secretValue = "${{ secrets.PASS_SUPERADM }}"
             [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", $secretValue, "Machine")
             Add-Content -Path $env:GITHUB_ENV "PWD_SUPERADMIN=$secretValue"
+            $secretValue = "${{ secrets.PASS_ALL_ROLE }}"
+            [Environment]::SetEnvironmentVariable("PWD_ALL_ROLE", $secretValue, "Machine")
+            Add-Content -Path $env:GITHUB_ENV "PWD_ALL_ROLE=$secretValue"
 
         - name: Create Directory --> Test/reports
           run: | 

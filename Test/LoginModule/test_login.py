@@ -3,7 +3,7 @@ from Config.dataconfig import TestData
 from Test.object_instance import ObjectInstantiation
 
 @pytest.mark.usefixtures("setup_scope_function")
-class TestLoginModalFunctionality(ObjectInstantiation):
+class TestLoginFunctionality(ObjectInstantiation):
 
     """ Failed login section """
     @pytest.mark.smoke
@@ -12,9 +12,10 @@ class TestLoginModalFunctionality(ObjectInstantiation):
         self.loginf().login_with_user_credential(TestData.SUPERADMIN_27, TestData.INVALID_PASSWORD)
         self.loginf().check_error_message_when_login_is_failed_indonesians()
 
+    @pytest.mark.smoke
     def test_user_login_using_unverified_candidates_email_account_32b(self):
         self.landingf().click_to_login_button()
-        self.loginf().login_with_user_credential(TestData.SUPERADMIN_27, TestData.PASS)
+        self.loginf().login_with_user_credential("visiprimaqa+51@gmail.com", TestData.PWD_ALL_ROLE)
         self.loginf().check_error_message_when_login_is_failed_indonesians()
 
 
