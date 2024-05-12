@@ -1,6 +1,7 @@
 Test/recheck_code.py
 recheck_code.py
-reports
+reports/assets/style.css
+reports/assets
 *.html
 .pytest_cache
 venv
