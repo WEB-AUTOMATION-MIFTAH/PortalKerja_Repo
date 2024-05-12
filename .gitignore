@@ -7,7 +7,22 @@ reports/assets
 venv
 assets/style.css
 assets
-.idea
 __pycache__
 *.__pycache__
+PortalKerja_Repo.iml
+.idea
+.idea/PortalKerja_Repo.iml
+.idea/workspace.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/shelf
+.idea/inspectionProfiles
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_8_03_[Changes]
+.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_8_03_[Changes]1
+.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_8_03__Changes_.xml
+*.patch
+*.pytest_cache
+
 
