@@ -4,3 +4,5 @@ reports
 *.html
 .pytest_cache
 venv
+assets/style.css
+assets
