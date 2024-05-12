@@ -56,6 +56,7 @@
 
         - name: Run Pytest
           run: | 
+            cd Test
             python -m pytest -vs --browser=chrome -m smoke --url=staging --html=./reports/staging_hrms_automation_test_report.html --self-contained-html
 
         - name: Upload Report to Github Artifact
