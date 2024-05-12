@@ -9,5 +9,6 @@ class LocLoginPage:
     LOC_EMAIL_FIELD = (By.XPATH, '//input[@id="login"]')
     LOC_PWD_FIELD = (By.XPATH, '//input[@id="password"]')
     LOC_LOGIN_BTN = (By.XPATH, '//div[@class="modal-body"]/form/div[5]')
-    LOC_SIGNUP_FREE_NOW = ''
-
+    LOC_FORGOT_PWD_LINKTXT = (By.XPATH, '//a[@href="/lupa-password"]')
+    LOC_ERROR_MSG_LOGIN = (By.XPATH, "//div[@class='error-msg']")
+    LOC_SIGNUP_FREE_NOW = (By.XPATH, '//a[@href="/select-role-registration"]')

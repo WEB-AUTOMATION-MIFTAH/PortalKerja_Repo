@@ -3,7 +3,7 @@ from Test import *
 
 class ObjectInstantiation:
 
-    # Landing
+    # Landing portal kerja
     def landingf(self):
         landingfunc = StepLandingFunc(self.driver)
         return landingfunc
@@ -12,7 +12,7 @@ class ObjectInstantiation:
         landingui = StepLandingUI(self.driver)
         return landingui
 
-    # Login
+    # Login portal kerja
     def loginf(self):
         login = StepLoginFunc(self.driver)
         return login
@@ -21,6 +21,10 @@ class ObjectInstantiation:
         login = StepLoginUI(self.driver)
         return login
 
+    # navbar hrms
+    def navbarhrmsf(self):
+        navf = StepHRMSDashboardFunc(self.driver)
+        return navf
 
 
 

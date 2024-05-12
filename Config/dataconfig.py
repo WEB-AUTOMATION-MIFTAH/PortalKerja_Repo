@@ -8,6 +8,7 @@ class TestData:
 
     """This is General Password"""
     PWD_SUPERADMIN = os.environ.get("PWD_SUPERADMIN")
+    PWD_ALL_ROLE = os.environ.get("PWD_ALL_ROLE")
     INVALID_PASSWORD = "JDJ009"
     BLANK_PASSWORD = ""
 

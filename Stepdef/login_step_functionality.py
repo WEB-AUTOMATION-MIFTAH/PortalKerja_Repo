@@ -7,6 +7,14 @@ class StepLoginFunc(CustomMethod, LocLoginPage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    def check_error_message_when_login_is_failed_indonesians(self):
+        a = self.get_text_of_element(self.LOC_ERROR_MSG_LOGIN)
+        assert a == 'Gagal untuk masuk, silakan periksa username dan/atau password kamu!', 'error msg is unexpected!'
+
+    def check_error_message_when_login_is_failed_english(self):
+        a = self.get_text_of_element(self.LOC_ERROR_MSG_LOGIN)
+        assert a == 'Login failed, please check your username and/or password!', 'error msg is unexpected!'
+
     def login_with_user_credential(self, email, password):
         self.fill_in(self.LOC_EMAIL_FIELD, email)
         self.fill_in(self.LOC_PWD_FIELD, password)
