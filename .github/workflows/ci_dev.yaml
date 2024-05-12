@@ -42,7 +42,7 @@
         - name: Set Time to UTC+7
           run: tzutil /s "SE Asia Standard Time"
 
-        - name: Set Up Variable SecretsValue 1
+        - name: Set Up Variable Secrets Values
           shell: powershell
           run: |
             $secretValue = "${{ secrets.PASS_SUPERADM }}"
