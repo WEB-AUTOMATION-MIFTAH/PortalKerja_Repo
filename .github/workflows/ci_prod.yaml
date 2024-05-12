@@ -1,4 +1,4 @@
-  name: Portal Kerja Web UI Automation - PROD Env
+  name: PROD - HRMS Web Automation Testing
 
   on:
     workflow_dispatch:
@@ -9,11 +9,9 @@
           default: 'warning'
         tags:
           description: 'Dev Development Tags'
-#    push:
-#      branches: [ main ]
+    push:
+      branches: [ main ]
 
-#    schedule:
-#      - cron: '00 05 * * *'
   jobs:
     run-tests:
       timeout-minutes: 240
@@ -24,39 +22,45 @@
           python-versions:
             - "3.11"
 
-      name: (PROD ENV) Test HRMS Portal Kerja
+      name: Automation Test Job
       runs-on: ${{ matrix.os }}
 
       steps:
-        - name: Checkout code
+        - name: Checkout Code
           uses: actions/checkout@v3
 
         - name: Set up Python
-          uses: actions/setup-python@v4
+          uses: actions/setup-python@v3
           with:
             python-version: ${{matrix.python-version}}
 
-        - name: install dependencies
+        - name: Install Dependencies
           run: |
             python -m pip install --upgrade pip
             python -m pip install -r requirements.txt
 
-        - name: Set Time Windows Server
+        - name: Set Time to UTC+7
           run: tzutil /s "SE Asia Standard Time"
 
-        - name: Run tests
+        - name: Set Up Variable Secrets
+          shell: powershell
+          run: |
+            $secretValue = "${{ secrets.PASS_SUPERADM }}"
+            [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", $secretValue, "Machine")
+            Add-Content -Path $env:GITHUB_ENV "PWD_SUPERADMIN=$secretValue"
+
+        - name: Create Directory --> Test/reports
           run: | 
             cd Test
             mkdir -p reports
-            python -m pytest -vs -m smoke --browser=chrome -m smoke --url=prod --html=reports/report_in_production.html --self-contained-html
 
-        - name: Set output --> upload artifact
-          uses: actions/upload-artifact@v3
+        - name: Run Pytest
+          run: | 
+            python -m pytest -vs --browser=chrome -m smoke --url=prod --html=./reports/prod_hrms_automation_test_report.html --self-contained-html
+
+        - name: Upload Report to Github Artifact
+          uses: actions/upload-artifact@v4
           if: success() || failure()
           with:
-            name: HRMS Test Report In PRODUCTION
-            path: Test/reports/report_in_production.html
-
-
-
-
+            name: PROD_HRMS_AutomationTestReports
+            path: Test/reports/prod_hrms_automation_test_report.html
