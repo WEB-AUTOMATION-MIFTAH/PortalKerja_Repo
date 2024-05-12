@@ -24,5 +24,6 @@ PortalKerja_Repo.iml
 .idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_8_03__Changes_.xml
 *.patch
 *.pytest_cache
+pytest_cache
 
 
