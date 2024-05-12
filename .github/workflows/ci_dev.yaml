@@ -42,16 +42,12 @@
         - name: Set Time to UTC+7
           run: tzutil /s "SE Asia Standard Time"
 
-#        - name: Set Up Variable SecretsValue 1
-#          shell: powershell
-#          run: |
-#            $secretValue = "${{ secrets.PASS_SUPERADM }}"
-#            [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", $secretValue, "Machine")
-#            Add-Content -Path $env:GITHUB_ENV "PWD_SUPERADMIN=$secretValue"
-
-        - name: Set Up Variable SecretsValue 2
+        - name: Set Up Variable SecretsValue 1
           shell: powershell
           run: |
+            $secretValue = "${{ secrets.PASS_SUPERADM }}"
+            [Environment]::SetEnvironmentVariable("PWD_SUPERADMIN", $secretValue, "Machine")
+            Add-Content -Path $env:GITHUB_ENV "PWD_SUPERADMIN=$secretValue"
             $secretValue2 = "${{ secrets.PASS_ALL_ROLE }}"
             [Environment]::SetEnvironmentVariable("PWD_ALL_ROLE", $secretValue2, "Machine")
             Add-Content -Path $env:GITHUB_ENV "PWD_ALL_ROLE=$secretValue2"
